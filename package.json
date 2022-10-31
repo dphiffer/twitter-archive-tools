@@ -1,0 +1,25 @@
+{
+  "name": "twitter-archive-tools",
+  "version": "0.1.0",
+  "description": "Tools for making Twitter archive data more useful and portable",
+  "main": "twitter.js",
+  "scripts": {
+    "start": "node following.js",
+    "following": "node following.js"
+  },
+  "keywords": [
+    "social media",
+    "cli",
+    "twitter"
+  ],
+  "author": "Dan Phiffer",
+  "license": "MIT",
+  "dependencies": {
+    "adm-zip": "^0.5.9",
+    "fast-csv": "^4.3.6",
+    "glob": "^8.0.3",
+    "mkdirp": "^1.0.4",
+    "progress": "^2.0.3",
+    "puppeteer": "^19.2.0"
+  }
+}
