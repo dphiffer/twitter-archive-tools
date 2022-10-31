@@ -3,4 +3,4 @@ node_modules/
 archives/*.zip
 data/*.csv
 data/accounts/*.json
-skipped.log
+error.log

@@ -41,7 +41,9 @@
 	csvStream.pipe(csvFile).on('end', () => process.exit());
 
 	var browser, page;
-	var loaded = 0, skipped = 0;
+	var loaded = 0,
+	    skipped = 0,
+	    total = 0;
 	var errorLog;
 
 	async function setupPage() {
@@ -154,7 +156,7 @@
 			if (!errorLog) {
 				errorLog = fs.createWriteStream(`${__dirname}/error.log`);
 			}
-			errorLog.write(`skipped account ${id}\n`);
+			errorLog.write(`could not load account ${id}: https://twitter.com/intent/user?user_id=${id}\n`);
 			skipped++;
 			await setupPage();
 			return false;
@@ -164,9 +166,13 @@
 	await setupPage();
 	for (let account of data) {
 		let row = await loadAccount(account.following.accountId);
-		csvStream.write(row);
+		if (row) {
+			csvStream.write(row);
+			total++;
+		}
 		progress.tick(1);
 	}
+	console.log(`Saved ${total} rows`);
 	if (skipped > 0) {
 		errorLog.end();
 		console.log(`Skipped ${skipped} accounts due to errors (see: error.log)`);
