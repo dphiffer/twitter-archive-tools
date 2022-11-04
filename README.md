@@ -46,3 +46,7 @@ So far that's all I have working. The resulting `following.csv` export includes 
 ## Why not use the Twitter API?
 
 I considered writing this using the Twitter API, but since it doesn't access any privileged information scraping was a bit simpler to get setup.
+
+## See also
+
+* [twarc](https://pypi.org/project/twarc/) ([example](https://twitter.com/IgorBrigadir/status/1587170258959450116))
